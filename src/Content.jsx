@@ -1,18 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { AritclesIndex } from "./Articlesindex";
+import { Articlesindex } from "./Articlesindex";
 
 export function Content() {
   const [articles, setArticles] = useState([]);
   const [searchTerms, setSearchTerms] = useState("");
+
   const handleIndexArticles = () => {
     axios.get("http://localhost:3000/articles.json?search_terms=" + searchTerms).then((response) => {
       console.log(response.data);
       setArticles(response.data.articles);
     });
   };
-
-  useEffect(handleIndexArticles, []);
   return (
     <div>
       <h1>Welcome to React!</h1>
@@ -20,7 +19,7 @@ export function Content() {
         Search: <input value={searchTerms} onChange={(event) => setSearchTerms(event.target.value)} type="text" />
         <button onClick={handleIndexArticles}>Submit</button>
       </div>
-      <ArticlesIndex articles={articles} />
+      <Articlesindex articles={articles} />
     </div>
   );
 }

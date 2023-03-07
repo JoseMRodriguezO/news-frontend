@@ -1,4 +1,4 @@
-export function AritclesIndex(props) {
+export function Articlesindex(props) {
   return (
     <div>
       <h1>All articles</h1>
